@@ -1,27 +1,28 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   const handleGetStarted = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-    setIsOpen(false)
-  }
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    setIsOpen(false);
+  };
 
   const navLinks = [
     { href: "#services", label: "Services" },
     { href: "#portfolio", label: "Portfolio" },
     { href: "#about", label: "About" },
     { href: "#contact", label: "Contact" },
-  ]
+  ];
 
   return (
     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
@@ -31,9 +32,15 @@ export default function Navigation() {
           <div className="flex-shrink-0">
             <a
               href="#"
-              className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+              className="inline-flex items-center text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
             >
-              Neju
+              <Image
+                src="/logo.jpg"
+                alt="Graphics Company logo"
+                width={48}
+                height={48}
+                className="object-contain"
+              />
             </a>
           </div>
 
@@ -48,7 +55,10 @@ export default function Navigation() {
                 {link.label}
               </a>
             ))}
-            <Button className="bg-primary hover:bg-primary/90" onClick={handleGetStarted}>
+            <Button
+              className="bg-primary hover:bg-primary/90"
+              onClick={handleGetStarted}
+            >
               Get Started
             </Button>
           </div>
@@ -77,12 +87,15 @@ export default function Navigation() {
                 {link.label}
               </a>
             ))}
-            <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleGetStarted}>
+            <Button
+              className="w-full bg-primary hover:bg-primary/90"
+              onClick={handleGetStarted}
+            >
               Get Started
             </Button>
           </div>
         )}
       </div>
     </nav>
-  )
+  );
 }
